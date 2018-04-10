@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/main.min.css">
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    var fontSize = 100 * (clientWidth / 750);
+                    docEl.style.fontSize = fontSize + 'px';
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+
+<body>
+    <div class="preview-layer">
+        <div class="preview-template">
+            <div id="imagePreview" class="image-preview"></div>
+        </div>
+        <div class="btn-group preview-btn">
+            <input id="upLoadInput" type="file" value="" accept="image/*">
+        </div>
+        <div class="btn-group save-btn">
+
+        </div>
+    </div>
+    <!-- <script src="./libs/jquery.min.js"></script> -->
+    <!-- <script src="./libs/touch.js"></script> -->
+    <script src="./libs/exif.js"></script>
+    <!-- <script src="./js/main.js"></script> -->
+    <script>
+        document.addEventListener('touchmove', function (event) {
+            event.preventDefault();
+        }, false);
+
+
+        let upLoadInput = document.getElementById('upLoadInput');
+        let imagePreview = document.getElementById('imagePreview');
+        // let ctx = canvas.getContext("2d");
+        let orientation = null;
+        let changeImgRotate = null;
+
+        //选择照片
+        upLoadInput.addEventListener('change', function (e) {
+            let file = e.target.files[0];
+            if (!/image\/\w+/.test(file.type)) {
+                alert("看清楚哦，这个需要图片！");
+            } else {
+                //获取ios下图片旋转方向角（exif.js插件）
+                EXIF.getData(file, function () {
+                    EXIF.getAllTags(this);
+                    orientation = EXIF.getTag(this, 'Orientation');
+                    if (orientation == 6) {
+                        changeImgRotate = 90
+                    } else if (orientation == 8) {
+                        changeImgRotate = 270
+                    } else if (orientation == 3) {
+                        changeImgRotate = 180
+                    } else {
+                        changeImgRotate = 0
+                    }
+                });
+
+                let fileReader = new FileReader();
+                fileReader.readAsDataURL(file);
+                fileReader.onload = function (e) {
+                    imagePreview.style.transform = `rotate(${changeImgRotate}deg)`;
+                    imagePreview.style.background = `url("${e.target.result}") center/cover no-repeat`;
+                }
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+@import "./reset.scss";
+a {
+  text-decoration: none;
+}
+img {
+  display: block;
+  -webkit-transform: scale(1) rotate(0) translate3d(0, 0, 0);
+  transform: scale(1) rotate(0) translate3d(0, 0, 0);
+}
+
+.preview-layer{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("../images/preview-layer-bg.png") center/cover no-repeat;
+  .preview-template{
+    position: absolute;
+    top: .64rem;
+    left: .64rem;
+    width: 6.52rem;
+    height: 9.94rem;
+    background: url("../images/preview-template.png") center/cover no-repeat;
+    overflow: hidden;
+    .image-preview {
+      position: absolute;
+      left: .25rem;
+      top: .25rem;
+      width: 5.94rem;
+      height: 7.99rem;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
+  
+}
+
+.btn-group{
+  position: absolute;
+  width: 2.4rem;
+  height: .62rem;
+  text-align: center;
+  color: #fff;
+  margin: 10px auto;
+  border-radius: .05rem;
+  overflow: hidden;
+  font-size: .4rem;
+  &.preview-btn{
+    left: 1rem;
+    top: 10.80rem;
+    background: url("../images/reselect-btn.png") center/cover no-repeat;
+  }
+  &.save-btn{
+    left: 4.53rem;
+    top: 10.80rem;
+    background: url("../images/save-btn.png") center/cover no-repeat;
+  }
+  input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+}
