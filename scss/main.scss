@@ -51,11 +51,19 @@ img {
     left: 1rem;
     top: 10.80rem;
     background: url("../images/reselect-btn.png") center/cover no-repeat;
+    &:active{
+      transition: .1s;
+      transform: translateY(.05rem);
+    }
   }
   &.save-btn{
     left: 4.53rem;
     top: 10.80rem;
     background: url("../images/save-btn.png") center/cover no-repeat;
+    &:active{
+      transition: .1s;
+      transform: translateY(.05rem);
+    }
   }
   input {
     width: 100%;
