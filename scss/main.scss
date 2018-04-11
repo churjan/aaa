@@ -8,30 +8,105 @@ img {
   transform: scale(1) rotate(0) translate3d(0, 0, 0);
 }
 
+.loading-layer{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index:999;
+  background: #1E171D;
+}
+
 .preview-layer{
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background: url("../images/preview-layer-bg.png") center/cover no-repeat;
+  background: url("../images/preview-layer-bg.png") center center/cover no-repeat;
   .preview-template{
     position: absolute;
     top: .64rem;
     left: .64rem;
     width: 6.52rem;
     height: 9.94rem;
-    background: url("../images/preview-template.png") center/cover no-repeat;
+    background: #fff;
     overflow: hidden;
+  
     .image-preview {
+      border: 1px solid #000;
       position: absolute;
       left: .25rem;
       top: .25rem;
       width: 5.94rem;
       height: 7.99rem;
-      background-position: center;
-      background-size: cover;
+      background-image:url("../images/result-default.png");
+      background-position: center center;
+      background-size: 100%;
       background-repeat: no-repeat;
+      
+    }
+    .like{
+      position: absolute;
+      width: 6rem;
+      height: 2rem;
+      border: none;
+      background: none;
+      font-size: .8rem;
+      color: #fff;
+      // transform: rotate(-10deg);
+    }
+    .line{
+      position: absolute;
+      top: .1rem;
+      left: .4rem;
+      width: 0;
+      height: 1rem;
+      border-right: .05rem solid #fff;
+      @keyframes move {
+        0%{
+          opacity: 0;
+        }
+        50%{
+          opacity: 0;
+        }
+        100%{
+          opacity: 1;
+        }
+      }
+      animation: move .5s linear 0s infinite;
+    }
+    .zanzhu-logo{
+      width: 3.64rem;
+      height: .40rem;
+      position: absolute;
+      left: .41rem;
+      top: 8.45rem;
+    }
+    .zuijia{
+      position: absolute;
+      left: 4.41rem;
+      top: .36rem;
+      width: 1.66rem;
+      height: .86rem;
+     
+    }
+    .qrcode{
+      position: absolute;
+      right: .24rem;
+      bottom: .20rem;
+      width: 1.12rem;
+      height: 1.09rem;
+    }
+    .qrcode-text{
+      position: absolute;
+      right: 1.43rem;
+      bottom: .20rem;
+      width: 2rem;
+      font-size: .22rem;
+      text-align: right;
+      color: #000;
     }
   }
   
@@ -73,4 +148,76 @@ img {
     left: 0;
     opacity: 0;
   }
+}
+
+.result-layer{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  z-index: 4;
+  background: #fff;
+  .result-image {
+    border: 1px solid #000;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 7.5rem;
+    height: 10rem;
+    background-image:url("../images/result-default.png");
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+  .zanzhu-logo{
+    position: absolute;
+    left: .24rem;
+    top: 10.44rem;
+    width: 4.76rem;
+    height: .52rem;
+   
+  }
+  .zuijia{
+    position: absolute;
+    left: 5.32rem;
+    top: .44rem;
+    width: 1.66rem;
+    height: .86rem;
+   
+  }
+  .like-text{
+    position: absolute;
+    bottom: 2.67rem;
+    left: .31rem;
+    width: 7.19rem;
+    height: 4.44rem;
+  }
+  .qrcode{
+    position: absolute;
+    right: .38rem;
+    bottom: .26rem;
+    width: 1.43rem;
+    height: 1.4rem;
+  }
+  .qrcode-text{
+    position: absolute;
+    right: 1.9rem;
+    bottom: .23rem;
+    width: 2rem;
+    font-size: .24rem;
+    text-align: right;
+    color: #000;
+  }
+}
+.compound-layer{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  z-index: 5;
+  background: #fff;
 }

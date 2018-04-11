@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width", initial-scale=1.0,user-scalable="no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="./css/main.min.css">
@@ -25,18 +25,38 @@
 </head>
 
 <body>
-    <div class="preview-layer">
-        <div class="preview-template">
-            <div id="imagePreview" class="image-preview"></div>
+    <div id="loading" class="loading-layer"></div>
+    <div id="previewLayer" class="preview-layer">
+        <div class="preview-template" id="previewTemplate">
+            
+            <div src="./images/result-default.png" id="previewImage" class="image-preview"></div>
+            <input class="like" id="like" type="text" value="瑜伽" autofocus>
+            <div class="line" id="line"></div>
+            <img class="zanzhu-logo" src="./images/zanzhu-logo.png" alt="">
+            <img src="./images/zuijia.png" class="zuijia">
+            <div class="qrcode-text">长按记录<br/>我的全场最佳瞬间</div>
+            <img class="qrcode" src="./images/qrcode.png" alt="">
         </div>
+       
         <div class="btn-group preview-btn">
-            <input id="upLoadInput" type="file" value="" accept="image/*">
+            <input id="previewBtn" type="file" value="" accept="image/*">
         </div>
-        <div class="btn-group save-btn">
-
+        <div id="saveBtn" class="btn-group save-btn">
         </div>
     </div>
+    <div id="resultLayer" class="result-layer">
+        <div src="./images/result-default.png" id="resultImage" class="result-image"></div>
+        <img class="zanzhu-logo" src="./images/zanzhu-logo.png" alt="">
+        <img src="./images/zuijia.png" class="zuijia">
+        <img class="like-text" src="./images/like-text.png">
+        <div class="qrcode-text">长按记录<br/>我的全场最佳瞬间</div>
+        <img class="qrcode" src="./images/qrcode.png" alt="">
+        
+    </div>
+    <div id="compoundLayer" class="compound-layer"></div>
     <script src="./libs/exif.js"></script>
+    <script src="./libs/html2canvas.js"></script>
+    <script src="./libs/canvas-keyframes.min.js"></script>
     <script src="./js/main.js"></script>
 
 </html>
