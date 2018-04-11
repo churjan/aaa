@@ -16,6 +16,14 @@ img {
   right: 0;
   z-index:999;
   background: #1E171D;
+  .loading-span{
+    position: absolute;
+    bottom:2.5rem;
+    left:50%;
+    transform: translate(-50%,-50%);
+    color: #fff;
+    
+  }
 }
 
 .preview-layer{

@@ -24,54 +24,113 @@
   /**
    * loading
    */
-
-  let count = 0;
-  let imgArr = [];
-  for (let i = 1; i <= 29; i++) {
-    (function(i) {
-      let img = new Image();
-      img.onload = function() {
-        img.onload = null;
-        count++;
-        imgArr.push(img);
-        if (count == 29) {
-          keyFramesHandler(imgArr);
-        }
-      };
-      img.onerror = function() {};
-      let j = i < 10 ? "0" + i : i;
-      img.src = "../images/ball-jump/qiutiao_000" + j + ".png";
-    })(i);
-  }
-
-    function keyFramesHandler(imgArr) {
-        let keyFrames;
-        keyFrames = new CanvasKeyFrames(
-        document.querySelector("#loading"),
-        "array",
-        imgArr,
-        {
-            fps: 15,
-            width: "100%",
-            height: "100%"
-        }
-        );
-        keyFrames.play();
+  let loadingLayer=document.getElementById('loadingLayer');
+  let keyFrames1;
+  let keyFrames2;
+function animation1(){
+    let count = 0;
+    let imgArr = [];
+    for (let i = 1; i <= 29; i++) {
+      (function(i) {
+        let img = new Image();
+        img.onload = function() {
+          img.onload = null;
+          count++;
+          imgArr.push(img);
+          if (count == 29) {
+            keyFramesHandler(imgArr);
+          }
+        };
+        img.onerror = function() {};
+        let j = i < 10 ? "0" + i : i;
+        img.src = "../images/ball-jump/qiutiao_000" + j + ".png";
+      })(i);
     }
+  
+      function keyFramesHandler(imgArr) {
+          keyFrames1 = new CanvasKeyFrames(
+            loadingLayer,
+          "array",
+          imgArr,
+          {
+              fps: 12,
+              width: "100%",
+              height: "100%"
+          }
+          );
+          keyFrames1.play();
+      }
+ }
+    animation1();
+function animation2(){
+      let count = 0;
+      let imgArr = [];
+      for (let i = 0; i <= 24; i++) {
+        (function(i) {
+          let img = new Image();
+          img.onload = function() {
+            img.onload = null;
+            count++;
+            imgArr.push(img);
+            if (count == 24) {
+              keyFramesHandler(imgArr);
+            }
+          };
+          img.onerror = function() {};
+          let j = i < 10 ? "0" + i : i;
+          img.src = "../images/loading-finish/000" + j + ".png";
+        })(i);
+      }
     
-    // let imgArr = [
-
-    //   ];
-    //   let loading = document.getElementById("loading");
-    //   let loadingSpan = document.getElementById("loadingSpan");
-    //   let imgIndex = 0;
-    //   for (let i = 0, len = imgArr.length; i < len; i++) {
-    //     let img = new Image();
-    //     img.src = "./images/" + imgArr[i];
-    //     img.onload = function() {
-    //       imgIndex++;
-    //       let percent = parseInt(imgIndex / imgArr.length * 100);
-    //       loadingSpan.innerHTML = percent + "%";
+        function keyFramesHandler(imgArr) {
+            keyFrames2 = new CanvasKeyFrames(
+            loadingLayer,
+            "array",
+            imgArr,
+            {
+                fps: 20,
+                loop:1,
+                width: "100%",
+                height: "100%"
+            }
+            );
+            keyFrames2.play(function(){
+              if(keyFrames2.state=='stop'){
+                keyFrames2.destroy();
+                setTimeout(() => {
+                  loadingLayer.style.display='none';
+                }, 500);
+              }
+              
+            });
+            
+          
+        }
+   }
+function loading(){
+    let imgArr = ['preview-layer-bg.png','preview-layer-text.png','result-default.png'];
+    let loadingSpan = document.getElementById("loadingSpan");
+    let imgIndex = 0;
+    for (let i = 0, len = imgArr.length; i < len; i++) {
+      let img = new Image();
+      img.src = "./images/" + imgArr[i];
+      img.onload = function() {
+        imgIndex++;
+        let percent = parseInt(imgIndex / imgArr.length * 100);
+        loadingSpan.innerHTML = percent + "%";
+        if(imgIndex==imgArr.length){
+          console.log(keyFrames1);
+          setTimeout(() => {
+            keyFrames1.destroy();
+            loadingSpan.style.display='none';
+            animation2();
+          }, 1000);
+        }
+      }
+    }
+}
+loading();
+   
 
     like.ontouchstart = function() {
       // console.log(12);
