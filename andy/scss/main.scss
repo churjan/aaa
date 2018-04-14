@@ -1,0 +1,444 @@
+@import "./reset.scss";
+a {
+  text-decoration: none;
+}
+img {
+  display: block;
+  -webkit-transform: scale(1) rotate(0) translate3d(0, 0, 0);
+  transform: scale(1) rotate(0) translate3d(0, 0, 0);
+}
+// body {
+//   padding-top: constant(safe-area-inset-top);   //为导航栏+状态栏的高度 88px            
+//   padding-left: constant(safe-area-inset-left);   //如果未竖屏时为0                
+//   padding-right: constant(safe-area-inset-right); //如果未竖屏时为0                
+//   padding-bottom: constant(safe-area-inset-bottom);//为底下圆弧的高度 34px       
+// }
+// @media only screen and (width: 375px) and (height: 690px){
+//   body {
+//       background: #000;
+//   }
+// }
+
+.loading-layer{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index:666;
+  background: #1E171D;
+  .loading-span {
+    position: absolute;
+    bottom:2.5rem;
+    left:50%;
+    transform: translate(-50%,-50%);
+    color: #fff;
+    font-size: .5rem;
+    
+  }
+}
+.pengyouquan-layer{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  background: #000;
+  z-index:666;
+  video{
+    position: absolute;
+    top: -1.28rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    // width: 100%;
+    // height: 100%;
+    display: none;
+  }
+  canvas{
+    position: absolute;
+    top: -1.28rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+  }
+  .loading{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    background: url("../images/loading.gif") center/.32rem .32rem no-repeat rgba(0,0,0,.6);
+    z-index: 666;
+  }
+}
+.poster-layer{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  background: url("../images/layer-bg.png") center center/cover no-repeat;
+  z-index:666;
+  video{
+    height: 100%;
+  }
+ .logo{
+   position: absolute;
+   left: .59rem;
+   top: .29rem;
+   width: 1.45rem;
+   height: .59rem;
+ }
+ .people{
+  position: absolute;
+  left: .5rem;
+  top: 1rem;
+   width: 6.34rem;
+   height: 10.12rem;
+   background: url("../images/poster-layer-people.png") center/cover no-repeat;
+   border: .08rem solid #fff;
+   .zuijia{
+    position: absolute;
+    width: 1.51rem;
+    height: .78rem;
+    right: .26rem;
+    top: .26rem;
+    background: url("../images/zuijia.png") center/cover no-repeat;
+   }
+   .play-btn{
+    position: absolute;
+    left: 2.53rem;
+    top: 3.77rem;
+     width: 1.02rem;
+     height: 1.02rem;
+    background: url("../images/poster-layer-play-btn.png") center/cover no-repeat;
+    // &:active{
+    //   transform: translateY(.05rem);
+    //   transition: .1s;
+    // }
+   }
+   .play-btn-text{
+    position: absolute;
+    left: 2.53rem;
+    top: 4.9rem;
+    font-size: .3rem;
+    color: #fff;
+   }
+   .upload-btn{
+    position: absolute;
+    left: .89em;
+    top: 8.82rem;
+     width: 4.57rem;
+     height: .59rem;
+    background: url("../images/poster-layer-upload-btn.png") center/cover no-repeat;
+    &:active{
+      transform: translateY(.05rem);
+      transition: .1s;
+    }
+   }
+ }
+}
+.mainvideo-layer{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000;
+  z-index: 999;
+  display: none;
+  .loading{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    background: url("../images/loading.gif") center/.32rem .32rem no-repeat rgba(0,0,0,.6);
+    z-index: 666;
+  }
+  video{
+    height: 100%;
+    display: none;
+  }
+  canvas{
+    width: 100%;
+    height: 100%;
+    display: none;
+  }
+  .tiaoguo{
+    position: absolute;
+    bottom: 0.5rem;
+    right: .2rem;
+    transform: rotate(90deg);
+    padding: .1rem .2rem;
+    font-size: .3rem;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: .1rem;
+    display: none;
+    z-index: 999;
+  }
+}
+.clip-layer{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000;
+  z-index: 12345;
+  display: none;
+  .clip-btn{
+    display: block;
+    position: fixed;
+    bottom: .3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    background-color: #04be02;
+    line-height: 1;
+    font-size: .3rem;
+    padding: .3rem .3rem;
+    z-index: 10000;
+    border-radius: .1rem;
+  }
+}
+.preview-layer{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("../images/layer-bg.png") center center/cover no-repeat;
+  .preview-template{
+    position: absolute;
+    top: .64rem;
+    left: .64rem;
+    width: 6.52rem;
+    height: 9.94rem;
+    background: #fff;
+    overflow: hidden;
+  
+    .image-preview {
+      position: absolute;
+      left: .25rem;
+      top: .25rem;
+      width: 5.94rem;
+      height: 7.99rem;
+      // background-image:url("../images/result-default.png");
+      // background-position: center center;
+      // background-size: 100%;
+      // background-repeat: no-repeat;
+      
+    }
+      .like-text{
+        position: absolute;
+        top: 5.25rem;
+        left: 0.77rem;
+        width: 4.32rem;
+        height: 2.28rem;
+      }
+    .like{
+      position: absolute;
+      padding: .07rem .1rem;
+      top: 5.2rem;
+      left: 2.9rem;
+      width: 1.7rem;
+      line-height: 1;
+      border: none;
+      background: none;
+      font-size: 0.4rem;
+      color: #fff;
+      transform: rotate(-7deg);
+      background-color: rgba(255,255,255,0.3);
+      border-radius: .1rem;
+      z-index: 666;
+    }
+    .line{
+      position: absolute;
+      top: 5.2rem;
+      left: 4.1rem;
+      width: 0;
+      height: 0.5rem;
+      transform: rotate(-6deg);
+      border-right: .03rem solid #fff;
+      @keyframes move {
+        0%{
+          opacity: 0;
+        }
+        50%{
+          opacity: 0;
+        }
+        100%{
+          opacity: 1;
+        }
+      }
+      animation: move .5s linear 0s infinite;
+    }
+    .zanzhu-logo{
+      width: 3.14rem;
+      height: .35rem;
+      position: absolute;
+      left: 0.31rem;
+      top: 8.41rem;
+    }
+    .zuijia{
+      position: absolute;
+      left: 4.41rem;
+      top: .36rem;
+      width: 1.66rem;
+      height: .86rem;
+     
+    }
+    .qrcode{
+      position: absolute;
+      right: .24rem;
+      bottom: .20rem;
+      width: 1.12rem;
+      height: 1.12rem;
+    }
+    .qrcode-text{
+      position: absolute;
+      right: 1.43rem;
+      bottom: .20rem;
+      width: 2rem;
+      font-size: .22rem;
+      text-align: right;
+      color: #000;
+    }
+    .decoration-animation{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      
+    }
+  }
+  
+}
+
+.btn-group{
+  position: absolute;
+  width: 2.4rem;
+  height: .62rem;
+  text-align: center;
+  color: #fff;
+  margin: 10px auto;
+  border-radius: .05rem;
+  overflow: hidden;
+  font-size: .4rem;
+  &.preview-btn{
+    left: 1rem;
+    top: 10.80rem;
+    background: url("../images/reselect-btn.png") center/cover no-repeat;
+    &:active{
+      transition: .1s;
+      transform: translateY(.05rem);
+    }
+  }
+  &.save-btn{
+    left: 4.53rem;
+    top: 10.80rem;
+    background: url("../images/save-btn.png") center/cover no-repeat;
+    &:active{
+      transition: .1s;
+      transform: translateY(.05rem);
+    }
+  }
+  input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+}
+
+.result-layer{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  z-index: 4;
+  background: #fff;
+  .result-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 7.5rem;
+    height: 10rem;
+    // background-image:url("../images/result-default.png");
+    // background-position: center;
+    // background-size: 100%;
+    // background-repeat: no-repeat;
+  }
+  .zanzhu-logo2{
+    position: absolute;
+    left: .24rem;
+    top:10.44rem;
+    width: 3.96rem;
+    height: .44rem;
+   
+  }
+  .zuijia{
+    position: absolute;
+    left: 5.32rem;
+    top: .44rem;
+    width: 1.66rem;
+    height: .86rem;
+   
+  }
+  .like-text{
+    position: absolute;
+    top: 5.26rem;
+    left: .14rem;
+    width: 7.19rem;
+    height: 4.44rem;
+  }
+  .hobby-text{
+    position: absolute;
+    top: 6.36rem;
+    left: 2.94rem;
+    font-size: 0.86rem;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    transform: rotate(-5deg);
+  }
+  .qrcode{
+    position: absolute;
+    left: 5.8rem;
+    top: 10.40rem;
+    width: 1.43rem;
+    height: 1.43rem;
+  }
+  .qrcode-text{
+    position: absolute;
+    left: 3.64rem;
+    top: 11.11rem;
+    width: 2rem;
+    font-size: .24rem;
+    text-align: right;
+    color: #000;
+  }
+}
+.compound-layer{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  z-index: 5;
+  background: #fff;
+}

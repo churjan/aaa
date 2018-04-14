@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width", initial-scale=1.0,user-scalable="no">
+    <meta name="viewport" content="width=device-width", initial-scale=1.0,user-scalable="no",viewport-fit="cover">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>我就是全场最佳</title>
     <link rel="stylesheet" href="./css/main.min.css">
     <script>
         (function (doc, win) {
@@ -25,40 +25,148 @@
 </head>
 
 <body>
+        <!-- <img src="./images/ball-jump/ball-jump.png" alt="" style="display: none;"> -->
     <div id="loadingLayer" class="loading-layer">
+        <div class="loading-sprite" id="loadingSprite"></div>
         <div id="loadingSpan" class="loading-span">0%</div>
     </div>
+    <!-- <div id="loadingLayer2" class="loading-layer2"></div> -->
+
+
+    <div id="posterLayer" class="poster-layer">
+            <div class="wrap">
+                    <img class="logo" src="./images/poster-layer-logo.png" alt="">
+                    <div class="people">
+                        <div class="zuijia"></div>
+                        <div class="play-btn" id="playBtn"></div>
+                        <div class="play-btn-text" id="playBtnText">点击播放</div>
+                        <div class="upload-btn" id="uploadBtn"></div>
+                        <div class="init-btn" id="initBtn"></div>
+                    </div>
+            </div>
+        </div>
+    <div id="pengyouquanLayer" class="pengyouquan-layer">
+        <div class="loading" id="pengyouquanLoading"></div>
+        <div id="playMainPlayBtn" class="play-main-btn"></div>
+        <!-- <video id="pengyouquanVideo" src="./mp4/pengyouquan.mp4" x-webkit-airplay="true" playsinline webkit-playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen=”true”></vidoe> -->
+            <video id="video-ios" preload="auto"  width="100%" height="100%"  preload="load" playsinline="true"
+                    webkit-playsinline="true" x-webkit-airplay="allow" airplay="allow" x5-video-player-type="h5" x5-video-player-fullscreen="true">
+                    <source src="./mp4/pengyouquan.mp4" type="video/mp4">
+            </video>
+                <canvas id="video-android"></canvas>
+    </div>
+    <div class="mainvideo-layer" id="mainvideoLayer">
+            <div class="tiaoguo" id="tiaoguo">跳过</div>
+            <div class="tiaoguo" id="tiaoguo2">跳过</div>
+            <!-- <video id="mainvideo" src="./mp4/video.mp4" x-webkit-airplay="true" playsinline webkit-playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen=”true”></video> -->
+            <div class="loading" id="mainVideoLoading"></div>
+            <video id="video-ios2" preload="auto"  width="100%" height="100%" poster="" preload="load" playsinline="true"
+                        webkit-playsinline="true" x-webkit-airplay="allow" airplay="allow" x5-video-player-type="h5" x5-video-player-fullscreen="true">
+                        <source src="./mp4/video.mp4" type="video/mp4">
+                </video>
+            <canvas id="video-android2"></canvas>
+        </div>
+   
+
+  
+
+    
+
+    <!-- 选择自己风格的图层 -->
+    <div class="theme-layer" id="themeLayer">
+        <div class="theme-title"=></div>
+        <input type="radio" id="vehicle1" name="themeStyle" value="1" checked>
+        <label class="theme theme1"  for="vehicle1"></label>
+        
+        <input type="radio" id="vehicle2" name="themeStyle" value="2">
+        <label class="theme theme2"  for="vehicle2"></label>
+        
+        <input type="radio" id="vehicle3" name="themeStyle" value="3">
+        <label class="theme theme3"  for="vehicle3"></label>
+
+        <input type="radio" id="vehicle4" name="themeStyle" value="4">
+        <label class="theme theme4"  for="vehicle4"></label>
+
+        <input type="radio" id="vehicle5" name="themeStyle" value="5">
+        <label class="theme theme5"  for="vehicle5"></label>
+
+        <input type="radio" id="vehicle6" name="themeStyle" value="6">
+        <label class="theme theme6"  for="vehicle6"></label>
+
+        <input type="radio" id="vehicle7" name="themeStyle" value="7">
+        <label class="theme theme7" for="vehicle7"></label>
+
+        <input type="radio" id="vehicle8" name="themeStyle" value="8">
+        <label class="theme theme8"  for="vehicle8"></label>
+
+        <input type="radio" id="vehicle9" name="themeStyle" value="9">
+        <label  class="theme theme9" for="vehicle9"></label>
+
+
+        <!-- <div id="selectedThemeBtn">确定</div> -->
+    </div>
+    
+    
+    
     <div id="previewLayer" class="preview-layer">
         <div class="preview-template" id="previewTemplate">
             
-            <div src="./images/result-default.png" id="previewImage" class="image-preview"></div>
-            <input class="like" id="like" type="text" value="瑜伽" autofocus>
-            <div class="line" id="line"></div>
+            <img src="./images/result-default.png" id="previewImage" class="image-preview">
+            <!-- <input class="like" id="like" type="text" value=" 瑜伽" autofocus maxlength="3"> -->
+            <!-- <div class="line" id="line"></div> -->
             <img class="zanzhu-logo" src="./images/zanzhu-logo.png" alt="">
             <img src="./images/zuijia.png" class="zuijia">
-            <div class="qrcode-text">长按记录<br/>我的全场最佳瞬间</div>
-            <img class="qrcode" src="./images/qrcode.png" alt="">
+            <!-- <img class="like-text" src="./images/like-text.png"> -->
+            <!-- <img id="yishuzi1" class="yishuzi" alt=""> -->
+            <div class="qrcode-text">长按屏幕记录<br>我的全场最佳瞬间</div>
+            <img class="qrcode" src="./images/qrcode.jpg" alt="">
+            
+            <div class="decoration-animation" id="decorationAnimation2"></div>
+            <div class="decoration-animation" id="decorationAnimation1"></div>
         </div>
        
         <div class="btn-group preview-btn">
+            <button id="previewBtn2">
+        </div>
+        <div class="btn-group preview-btn" style="display: none;">
             <input id="previewBtn" type="file" value="" accept="image/*">
         </div>
         <div id="saveBtn" class="btn-group save-btn">
         </div>
     </div>
     <div id="resultLayer" class="result-layer">
-        <div src="./images/result-default.png" id="resultImage" class="result-image"></div>
-        <img class="zanzhu-logo" src="./images/zanzhu-logo.png" alt="">
+        <img src="./images/result-default.png" id="resultImage" class="result-image">
+        <img class="zanzhu-logo2" src="./images/zanzhu-logo2.png" alt="">
         <img src="./images/zuijia.png" class="zuijia">
         <img class="like-text" src="./images/like-text.png">
-        <div class="qrcode-text">长按记录<br/>我的全场最佳瞬间</div>
-        <img class="qrcode" src="./images/qrcode.png" alt="">
+        <img id="yishuzi2" class="yishuzi" alt="">
+        <!-- <div id="hobbyText" class="hobby-text">123</div> -->
+        <div class="qrcode-text">长按屏幕记录<br>我的全场最佳瞬间</div>
+        <img class="qrcode" src="./images/qrcode.jpg" alt="">
         
     </div>
     <div id="compoundLayer" class="compound-layer"></div>
+    <div class="clip-layer" id="clipLayer">
+            <div id="clipBtn" class="clip-btn">确认裁剪</div>
+        </div>
+    <script src="./libs/jquery.min.js"></script>
+    <script src="./libs/hammer.js"></script>
+    <script src="./libs/iscroll-zoom.js"></script>
+    <script src="./libs/lrz.all.bundle.js"></script>
+    <script src="./libs/jquery.photoClip.js"></script>
+
     <script src="./libs/exif.js"></script>
     <script src="./libs/html2canvas.js"></script>
+    <script src="./libs/canvas2image.js"></script>
     <script src="./libs/canvas-keyframes.min.js"></script>
+    <script src="./libs/jsmpeg.js"></script>
     <script src="./js/main.js"></script>
+    <!-- <script src="http://wechatfe.github.io/vconsole/lib/vconsole.min.js?v=3.0.0.0"></script> -->
+    <script src="./libs/vconsole.min.js"></script>
+    <script>
+        // 初始化vConsole
+		// window.vConsole = new window.VConsole();
+		// console.info('欢迎使用 vConsole。可用于展示 console 日志，方便开发、调试。');
+    </script>
 
 </html>

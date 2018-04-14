@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .test {
+            border: 1px solid red;
+            width: 3.84rem;
+            height: 3.26rem;
+            background-image: url("./ball-jump.png");
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            background-size: 111.36rem 3.26rem;
+            animation: test_anim 2s steps(29) infinite;
+        }
+
+       
+        @keyframes test_anim {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: -111.36rem 0;
+            }
+           
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./ball-jump.png" alt="" style="display: none;">
+    <div class="test"></div>
+
+</body>
+
+</html>
